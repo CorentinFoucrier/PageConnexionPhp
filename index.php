@@ -1,4 +1,8 @@
 <?php 
+	session_start();
+	if (isset($_SESSION['connect'])) {
+		header("Location: http://github.local/PageConnexionPhp/page.php");
+	}
 	if(!empty($_POST)){
 		$stock = ["julien" => "123456", "kevin" => "azerty"];
 		$username = $_POST['username'];
@@ -8,8 +12,9 @@
 			/* TODO : verifier couple user / mdp */
 			if (isset($stock[$username])) {
 				if ($password === $stock[$username]) {
-					header("Location: http://github/PageConnexionPhp/page.php");
+					header("Location: http://github.local/PageConnexionPhp/page.php");
 					session_start();
+					$_SESSION['username'] = $username;
 					$_SESSION['connect'] = true;
 				}else{
 					header("HTTP/1.0 403 Forbidden");
