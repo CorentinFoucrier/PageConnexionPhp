@@ -8,7 +8,9 @@
 			/* TODO : verifier couple user / mdp */
 			if (isset($stock[$username])) {
 				if ($password === $stock[$username]) {
-					die('connecté');
+					header("Location: http://github/PageConnexionPhp/page.php");
+					session_start();
+					$_SESSION['connect'] = true;
 				}else{
 					header("HTTP/1.0 403 Forbidden");
 					/* TODO : USERNAME ou MDP pas bon */
