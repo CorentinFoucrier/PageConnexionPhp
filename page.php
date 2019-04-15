@@ -1,20 +1,12 @@
 <?php
 	session_start();
-	if (isset($_GET['deconnect']) && $_GET['deconnect']) {
-		session_unset();
-		header("Location: http://github.local/PageConnexionPhp/index.php");
-		exit;
-	}
-	$connect = $_SESSION['username'];
-	if (empty($_SESSION)) {
-		header("HTTP/1.0 403 Forbidden");
-		header("Location: http://github.local/PageConnexionPhp/index.php");
-		exit;
-	}
+
+	require('connect.php');
+
 	$username = $_SESSION['username'];
 	
 	echo "super site <br />";
-	echo "Bonjour {$username} !"
+	echo "Bonjour {$username} !";
 ?>
 <br />
 <a href="http://github.local/PageConnexionPhp/profile.php"><button>Profil</button></a>
