@@ -5,7 +5,7 @@
 		exit;
 	}
 
-	if (!isset($_SESSION['connect'])) {
+	if (!isset($_SESSION['username'])) {
 		header("Location: http://github.local/PageConnexionPhp/index.php");
 		exit;
 	}

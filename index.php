@@ -1,12 +1,14 @@
 <?php 
 	session_start();
-
-	if (isset($_SESSION['connect'])) {
+	/* Si on est déjà connecter on redirige vers page.php */
+	if (isset($_SESSION['username'])) {
 		header("Location: http://github.local/PageConnexionPhp/page.php");
+		exit;
 	}
 
 	$errUsername = "";
 	$errPassword = "";
+	$errUsernamePwd = false;
 
 	if(!empty($_POST)){
 		$stock = require 'stock.php';
@@ -14,21 +16,17 @@
 		$password = $_POST['password'];
 
 		if (!empty($username) && !empty($password)) {
-			/* TODO : verifier couple user / mdp */
 			if (isset($stock[$username])) {
 				if ($password === $stock[$username]) {
-					header("Location: http://github.local/PageConnexionPhp/page.php");
 					session_start();
 					$_SESSION['username'] = $username;
-					$_SESSION['connect'] = true;
+					header("Location: http://github.local/PageConnexionPhp/page.php");
+					exit;
 				}else{
-					header("HTTP/1.0 403 Forbidden");
-
-					/* TODO : USERNAME ou MDP pas bon */
+					$errUsernamePwd = true;
 				}
 			}else{
-				header("HTTP/1.0 403 Forbidden");
-				/* TODO : USERNAME ou MDP pas bon */
+				$errUsernamePwd = true;
 			}
 		}else{
 			if (empty($username)) {
@@ -64,5 +62,8 @@
 				</div>
 			</section>
 		</div>
+		<?php if ($errUsernamePwd === true): ?>
+			<script src="assets/js/errorAlert.js"></script>
+		<?php endif; ?>
 	</body>
 </html>
