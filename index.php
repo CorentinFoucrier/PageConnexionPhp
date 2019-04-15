@@ -1,8 +1,14 @@
 <?php 
 	session_start();
+	
+
 	if (isset($_SESSION['connect'])) {
 		header("Location: http://github.local/PageConnexionPhp/page.php");
 	}
+
+	$errUsername = "";
+	$errPassword = "";
+
 	if(!empty($_POST)){
 		$stock = ["julien" => "123456", "kevin" => "azerty"];
 		$username = $_POST['username'];
@@ -18,6 +24,7 @@
 					$_SESSION['connect'] = true;
 				}else{
 					header("HTTP/1.0 403 Forbidden");
+
 					/* TODO : USERNAME ou MDP pas bon */
 				}
 			}else{
@@ -25,8 +32,12 @@
 				/* TODO : USERNAME ou MDP pas bon */
 			}
 		}else{
-			die('manque un champs');
-			/* TODO : signaler qu'il manque un champs */
+			if (empty($username)) {
+				$errUsername = "class=\"danger\"";
+			}
+			if (empty($password)) {
+				$errPassword = "class=\"danger\"";
+			}
 		}
 	}
 ?>
@@ -47,8 +58,8 @@
 					<h2>Identification</h2>
 				</header>
 				<form action="" method="Post">
-					<input type="text" name="username" placeholder="Nom d'utilisateur" required="required" />
-					<input type="password" name="password" placeholder="Mot de passe" required="required" />
+					<input <?php echo $errUsername ?> type="text" name="username" placeholder="Nom d'utilisateur" required="required" />
+					<input <?php echo $errPassword ?> type="password" name="password" placeholder="Mot de passe" required="required" />
 					<button type="submit">Connexion</button>
 				</form>
 			</div>
