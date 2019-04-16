@@ -24,6 +24,11 @@
 			<article>
 				<h2><?= $row['nom'] ?></h2>
 				<p><?= $row['description'] ?></p>
+				<form method="post" action="deletebeer.php">
+					<input type="hidden" name="id" value="<?= $row['id'] ?>">
+					<button type="submit">[X] <?= $row['nom'] ?></button>
+				</form>
+				
 			</article>
 		<?php endforeach; ?>
 			<!-- fin boucle -->

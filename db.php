@@ -1,7 +1,7 @@
 <?php
 	require 'config.php';
 
-	$dsn = 'mysql:'.$dbname.';host='.$dbhost.';charset=UTF8';
+	$dsn = 'mysql:dbname='.$dbname.';host='.$dbhost.';charset=UTF8';
 	
 
 	try {
