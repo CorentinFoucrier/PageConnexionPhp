@@ -7,7 +7,6 @@
 
 	$sql = 'SELECT * FROM biere';
 	$statement = $pdo->query($sql);
-
 	$tableBeer = $statement->fetchAll();
 
 ?>
@@ -18,9 +17,14 @@
 		<meta charset="utf-8">
 	</head>
 	<body>
+		<a href="http://github.local/PageConnexionPhp/page.php"><button>Acceuil</button></a>
+		<a href="http://github.local/PageConnexionPhp/profile.php"><button>Profil</button></a>
+		<a href="http://github.local/PageConnexionPhp/page.php?deconnect=true"><button>Déconnexion</button></a>
+		<br />
+		
 		<section>
-			<?php foreach ($tableBeer as $row): ?>
 			<!-- boucle sur tab beer -->
+			<?php foreach ($tableBeer as $row): ?>
 			<article>
 				<h2><?= $row['nom'] ?></h2>
 				<p><?= $row['description'] ?></p>
@@ -30,12 +34,8 @@
 				</form>
 				
 			</article>
-		<?php endforeach; ?>
+			<?php endforeach; ?>
 			<!-- fin boucle -->
 		</section>
-
-		<a href="http://github.local/PageConnexionPhp/profile.php"><button>Profil</button></a>
-		<a href="http://github.local/PageConnexionPhp/page.php"><button>Page d'acceuil</button></a>
-		<a href="http://github.local/PageConnexionPhp/page.php?deconnect=true"><button>Déconnexion</button></a>
 	</body>
 </html>
