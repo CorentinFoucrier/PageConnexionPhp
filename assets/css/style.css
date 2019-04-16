@@ -78,3 +78,7 @@ form button[type="submit"]:hover{
 .danger {
 	border: 3px solid red !important;
 }
+
+ul {
+	list-style: none;
+}

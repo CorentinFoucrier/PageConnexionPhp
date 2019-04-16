@@ -19,13 +19,14 @@
 	<head>
 		<title>profil</title>
 		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	</head>
 	<body>
 		<h2>Liste des utilisateurs :</h2>
 		<!-- boucle sur $users -->
 		<?php foreach ($users as $user): ?>
 		<ul>
-			<li><?= $user['username'] ?> mdp : <?= $user['password'] ?></li>
+			<li>- <?= $user['username'] ?> mdp : <?= $user['password'] ?></li>
 		</ul>
 		<?php endforeach; ?>
 		<!-- fin boucle -->

@@ -5,25 +5,34 @@
 		header("Location: http://github.local/PageConnexionPhp/page.php");
 		exit;
 	}
-
+	/*
+		Définition des variable pour contrer l'erreur
+		undefined en cas d'utilisation du debugeur "xdebug".
+	*/
 	$errUsername = "";
 	$errPassword = "";
 	$errUsernamePwd = false;
-
+	/* Vérif que le formulaire ($_POST) n'est pas vide */
 	if(!empty($_POST)){
-		$stock = require 'stock.php';
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-
+		/* verif que les champs ne sont pas vides */
 		if (!empty($username) && !empty($password)) {
-			if (isset($stock[$username])) {
-				if ($password === $stock[$username]) {
+			/* récupération de l'utilisateur */
+			require_once 'db.php';
+			$sql = 'SELECT * FROM users WHERE name = ?';
+			$statement = $pdo->prepare($sql);
+			$statement->execute([$username]);
+			$user = $statement->fetch();
+			/* Si $user est true alors on verif que le mdp est pareil qu'en BDD */
+			if ($user) {
+				if ($password === $user['password']) {
 					session_start();
-					$_SESSION['username'] = $username;
+					$_SESSION['username'] = $user['name'];
 					header("Location: http://github.local/PageConnexionPhp/page.php");
 					exit;
 				}else{
-					$errUsernamePwd = true;
+					$errUsernamePwd = true; // se reporter à </body>
 				}
 			}else{
 				$errUsernamePwd = true;
@@ -62,6 +71,7 @@
 				</div>
 			</section>
 		</div>
+		<!-- Si $errUsernamePwd est à true (erreur) alors execute le script js -->
 		<?php if ($errUsernamePwd === true): ?>
 			<script src="assets/js/errorAlert.js"></script>
 		<?php endif; ?>
