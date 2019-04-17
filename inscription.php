@@ -32,15 +32,15 @@
 				if (strlen($password) <= 10 && strlen($password) >= 5) { // Format à déposer dans la condition
 					/* Si mot de passe identiques = true */
 					if ($password === $passwordConfirmed) {
+						$passwordhash = password_hash($password, PASSWORD_BCRYPT);
 						require_once 'db.php';
 						$sql = 'INSERT INTO users (name, password) VALUES (:name, :password)';
 						$statement = $pdo->prepare($sql);
 						$result = $statement->execute([
 							':name' => $username,
-							':password' => $password
+							':password' => $passwordhash
 						]);
-						if ($result) {
-							/* Tout s'est bien passé */
+						if ($result) { // Si tout s'est bien passé
 							session_start();
 							$_SESSION['username'] = $username;
 							header("Location: page.php");
