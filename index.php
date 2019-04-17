@@ -14,7 +14,7 @@
 	$errUsernamePwd = false;
 	/* Vérif que le formulaire ($_POST) n'est pas vide */
 	if(!empty($_POST)){
-		$username = $_POST['username'];
+		$username = strtolower($_POST['username']);
 		$password = $_POST['password'];
 		/* verif que les champs ne sont pas vides */
 		if (!empty($username) && !empty($password)) {
