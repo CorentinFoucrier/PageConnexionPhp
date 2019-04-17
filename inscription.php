@@ -2,7 +2,7 @@
 	session_start();
 	/* Si on est déjà connecter on redirige vers page.php */
 	if (isset($_SESSION['username'])) {
-		header("Location: http://github.local/PageConnexionPhp/page.php");
+		header("Location: page.php");
 		exit;
 	}
 	/*
@@ -35,14 +35,23 @@
 						require_once 'db.php';
 						$sql = 'INSERT INTO users (name, password) VALUES (:name, :password)';
 						$statement = $pdo->prepare($sql);
-						$statement->execute([
+						$result = $statement->execute([
 							':name' => $username,
 							':password' => $password
 						]);
+						if ($result) {
+							/* Tout s'est bien passé */
+							session_start();
+							$_SESSION['username'] = $username;
+							header("Location: page.php");
+						}else{
+							die('erreur enregistrement en base de donnée');
+							/* TODO : Signaler l'erreur */
+						}
 					}else{
 						/* TODO : Les mot de passe ne sont pas identiques */
 					}
-				} else {
+				}else{
 					/* TODO : Mot de passe n'est pas entre 5 et 10 caractères */
 				}
 			}else{

@@ -12,7 +12,7 @@
 		$statement->execute([$id]);
 	}
 
-	header('Location: http://github.local/PageConnexionPhp/beer.php');
+	header('Location: beer.php');
 	exit;
 	
 ?>

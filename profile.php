@@ -26,13 +26,13 @@
 		<!-- boucle sur $users -->
 		<?php foreach ($users as $user): ?>
 		<ul>
-			<li>- <?= $user['username'] ?> mdp : <?= $user['password'] ?></li>
+			<li>- <?= $user['name'] ?> mdp : <?= $user['password'] ?></li>
 		</ul>
 		<?php endforeach; ?>
 		<!-- fin boucle -->
 		<br />
-		<a href="http://github.local/PageConnexionPhp/page.php"><button>Acceuil</button></a>
-		<a href="http://github.local/PageConnexionPhp/beer.php"><button>Bières</button></a>
-		<a href="http://github.local/PageConnexionPhp/profile.php?deconnect=true"><button>Déconnexion</button></a>
+		<a href="page.php"><button>Acceuil</button></a>
+		<a href="beer.php"><button>Bières</button></a>
+		<a href="profile.php?deconnect=true"><button>Déconnexion</button></a>
 	</body>
 </html>

@@ -17,9 +17,9 @@
 		<meta charset="utf-8">
 	</head>
 	<body>
-		<a href="http://github.local/PageConnexionPhp/page.php"><button>Acceuil</button></a>
-		<a href="http://github.local/PageConnexionPhp/profile.php"><button>Profil</button></a>
-		<a href="http://github.local/PageConnexionPhp/page.php?deconnect=true"><button>Déconnexion</button></a>
+		<a href="page.php"><button>Acceuil</button></a>
+		<a href="profile.php"><button>Profil</button></a>
+		<a href="page.php?deconnect=true"><button>Déconnexion</button></a>
 		<br />
 		
 		<section>

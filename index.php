@@ -1,8 +1,8 @@
 <?php 
 	session_start();
 	/* Si on est déjà connecter on redirige vers page.php */
-	if (isset($_SESSION['username'])) {
-		header("Location: http://github.local/PageConnexionPhp/page.php");
+	if (isset($_SESSION['username'])) { // Rappel : $_SESSION['username'] est setup uniquement à la connection/inscription par php.
+		header("Location: page.php");
 		exit;
 	}
 	/*
@@ -29,7 +29,7 @@
 				if ($password === $user['password']) {
 					session_start();
 					$_SESSION['username'] = $user['name'];
-					header("Location: http://github.local/PageConnexionPhp/page.php");
+					header("Location: page.php");
 					exit;
 				}else{
 					$errUsernamePwd = true; // se reporter à </body>
