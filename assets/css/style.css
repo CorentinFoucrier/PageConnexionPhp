@@ -37,17 +37,57 @@ h2{
 article{
 	border-bottom: 1px solid #d8d8d8;
 	padding: 10px 20px 0 20px;
-	margin: 10px 0
+	margin: 10px 0;
 }
 
 /* header */
 
-header {
+header{
 	background-color: #1C1C1C;
 	padding: 15px 20px;
+}
+
+header:before,
+header:after{
+	content: "";
+	display: table;
+}
+
+header:after{
+	clear: both;
+}
+
+header{
+	zoom:1;
 }
 
 h1.logo a{
 	color: #d8d8d8;
 	text-decoration: none;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+	line-height: 22px;
+	float: left;
+	letter-spacing: 0.2em;
+}
+
+a.to_nav{
+	float: right;
+	color: #fff;
+	background: #4e4e4e;
+	text-decoration: none;
+	padding: 0 10px;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 22px;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	border-radius: 2px;
+}
+
+a.to_nav:hover,
+a.to_nav:focus{
+	color: #1c1c1c;
+	background: #fff;
 }
