@@ -19,17 +19,23 @@
 	<head>
 		<title>profil</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	</head>
 	<body>
 		<h2>Liste des utilisateurs :</h2>
-		<!-- boucle sur $users -->
-		<?php foreach ($users as $user): ?>
-		<ul>
-			<li>- <?= $user['name'] ?> mdp : <?= $user['password'] ?></li>
-		</ul>
-		<?php endforeach; ?>
-		<!-- fin boucle -->
+		<section>
+			<!-- boucle sur le tableau users -->
+			<?php foreach ($users as $user): ?>
+				<article>
+					<form action="update.php" method="POST">
+						<input type="text" name="username" value="<?= $user["name"] ?>">
+						<input type="text" name="password" placeholder="modif mdp">
+						<input type="hidden" name="id" value="<?= $user["id"]?>">
+						<button type="submit">Modifier</button>
+					</form>
+				</article> 
+			<?php endforeach; ?>
+			<!-- fin boucle -->
+		</section>
 		<br />
 		<a href="page.php"><button>Acceuil</button></a>
 		<a href="beer.php"><button>Bières</button></a>

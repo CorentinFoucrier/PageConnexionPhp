@@ -26,11 +26,12 @@
 			$user = $statement->fetch();
 			/* Si $user est true alors on verif que le mdp est pareil qu'en BDD */
 			if ($user) {
-				if ($password === $user['password']) {
-					session_start();
-					$_SESSION['username'] = $user['name'];
+				
+				if (password_verify($password, $user["password"])){
+					
+					$_SESSION["connect"] = true;
+					$_SESSION["username"] = $username;
 					header("Location: page.php");
-					exit;
 				}else{
 					$errUsernamePwd = true; // se reporter à </body>
 				}
@@ -54,7 +55,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>formulaire de connexion</title>
-		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/form.css">
 	</head>
 	<body>
 		<div class="wrapper">
