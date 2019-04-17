@@ -131,3 +131,40 @@ footer{
 	text-align: center;
 	font-size: 14px;
 }
+
+/* media queries */
+
+@media only screen and (min-width: 768px){
+
+	.wrapper{
+		position: relative;
+		width: 768px;
+		margin: auto;
+	}
+
+	a.to_nav{
+		display: none;
+	}
+
+	#primary_nav{
+		position: absolute;
+		top: 5px;
+		right: 10px;
+		background: none;
+	}
+
+	#primary_nav li{
+		display: inline;
+	}
+
+	#primary_nav li a{
+		float: left;
+		border: none;
+		padding: 0 10px;
+		border-radius: 2px;
+	}
+
+	#primary_nav li.top{
+		display: none;
+	}
+}
